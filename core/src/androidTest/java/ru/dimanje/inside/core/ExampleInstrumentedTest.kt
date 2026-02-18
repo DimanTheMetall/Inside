@@ -1,4 +1,4 @@
-package ru.dimanje.inside
+package ru.dimanje.inside.core
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("ru.dimanje.inside", appContext.packageName)
+        assertEquals("ru.dimanje.inside.core.test", appContext.packageName)
     }
 }

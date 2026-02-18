@@ -1,3 +1,5 @@
+import ru.dimanje.inside.buildsrc.MetaInfo
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -6,34 +8,22 @@ plugins {
 
 android {
     namespace = "ru.dimanje.inside"
-    compileSdk = 36
+    compileSdk = MetaInfo.COMPILE_SDK
+
+    kotlin {
+        jvmToolchain(MetaInfo.JVM_TARGET)
+    }
 
     defaultConfig {
-        applicationId = "ru.dimanje.inside"
-        minSdk = 24
-        targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = MetaInfo.APPLICATION_ID
+        minSdk = MetaInfo.MIN_SDK
+        targetSdk = MetaInfo.TARGET_SDK
+        versionCode = MetaInfo.VERSION_CODE
+        versionName = MetaInfo.VERSION_NAME
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-    kotlinOptions {
-        jvmTarget = "11"
-    }
     buildFeatures {
         compose = true
     }
@@ -53,7 +43,6 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 }

@@ -1,4 +1,4 @@
-package ru.dimanje.inside
+package ru.dimanje.inside.core
 
 import org.junit.Test
 
